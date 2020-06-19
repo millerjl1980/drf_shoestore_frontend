@@ -11,17 +11,27 @@ class App extends React.Component{
   }
 
   componentDidMount(){
-    fetch('https://pokeapi.co/api/v2/pokemon')
+    fetch('http://127.0.0.1:8000/api/shoe/')
     .then(res => res.json())
-    .then(data => this.setState({shoes: data.results}))
+    .then(data => this.setState({shoes: data}))
   }
 
   render(){
     return (
       <div>
+        <h1>The Shoes</h1>
         <ul>
         {this.state.shoes.map(s => {
-          return (<li>{s.name}</li>)
+          return (
+            <div>
+            <li>Brand: {s.manufacturer}</li>
+            <li>Color:  {s.color}</li>
+            <li>Fasten Type: {s.fasten_type}</li>
+            <li>Material: {s.material}</li>
+            <li>Shoe Type: {s.shoe_type}</li>
+            <li>Size:  {s.size}</li>
+            <br></br>
+            </div>)
         })}
         </ul>
       </div>
